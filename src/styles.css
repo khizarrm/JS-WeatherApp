@@ -1,5 +1,6 @@
 body {
-  background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+  background-image: url('https://cardinalwxservice.com/wp-content/uploads/2019/04/maxresdefault-3.jpg');
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +87,7 @@ button:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-#result {
+#result, .mainData {
   background: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 15px;
@@ -98,6 +99,10 @@ button:hover {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mainData {
+  gap: 8px;
 }
 
 /* Add weather-themed animation */
@@ -151,3 +156,4 @@ button:hover {
       radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
   pointer-events: none;
 }
+

@@ -1,23 +1,26 @@
 import "./styles.css";
-import { greeting } from "./greeting.js";
+import { mainData } from "./mainData.js";
 
 const WEATHER_API = 'H6L4L7VQEJFEFWNSMXPF2FG6D';
-
+const res = document.getElementById('result');
 async function getWeather(city){
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/today?key=${WEATHER_API}`;
     const data = await fetch(url, {
         mode : 'cors'
     })
+    res.innerHTML = "Loading...";
     const info = await data.json();
-    console.log(info.currentConditions.temp);
-    return info.currentConditions.temp;
+    return info;
 }
 
 const form = document.getElementById('city');
 form.addEventListener('submit', async (event)=>{
     event.preventDefault();
     const city = document.getElementById('city-name').value; 
-    const res = document.getElementById('result');
-    res.innerHTML = "The weather in " + city + " is " + Math.round(await getWeather(city) * (5/9)) + "\u00B0C";
+    const info = await getWeather(city);
+    const place = info.resolvedAddress; 
+    mainData(info);
+    res.innerHTML = place;
     form.reset();
 })
+
